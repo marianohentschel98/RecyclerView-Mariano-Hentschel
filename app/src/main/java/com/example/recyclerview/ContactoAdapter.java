@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -39,6 +40,13 @@ public class ContactoAdapter extends RecyclerView.Adapter<ContactoAdapter.Contac
         holder.correo1.setText(contacto.getEmail());
         holder.telefono1.setText(contacto.getTelefono());
 
+        holder.itemView.setOnClickListener(v -> {
+            String mensaje = "Nombre: " + contacto.getNombre() + "\n" +
+                    "Apellido: " + contacto.getApellido() + "\n" +
+                    "Email: " + contacto.getEmail() + "\n" +
+                    "Teléfono: " + contacto.getTelefono();
+            Toast.makeText(context, mensaje, Toast.LENGTH_SHORT).show();
+        });
     }
 
     @Override
