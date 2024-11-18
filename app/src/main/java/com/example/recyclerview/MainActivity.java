@@ -9,12 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView foto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +25,16 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        ImageView imgFoto = foto.findViewById(R.id.foto1);
-        ArrayList<Contacto> listaContacto= new ArrayList<>();
-        listaContacto.add(new Contacto(R.drawable.icono,"Hentschel","Mariano","mariano.hentschel@gmail.com","5453454353"));
-        listaContacto.add(new Contacto(R.drawable.icono,"hombre",40,""));
-        listaContacto.add(new Contacto(R.drawable.icono,"hombre",36,false));
-        listaContacto.add(new Contacto(R.drawable.icono,"hombre",40,true));
 
-        RecyclerView lista = findViewById(R.id.listaContactos);
-        AdaptadorRopa miAdaptadorRopa = new AdaptadorRopa(listaContacto,this);
-        lista.setAdapter(miAdaptadorRopa);
+        ArrayList<Contacto> listaContacto= new ArrayList<>();
+        listaContacto.add(new Contacto(R.drawable.dondamian,"Hentschel","Mariano","mariano.hentschel@gmail.com","5453454353"));
+        listaContacto.add(new Contacto(R.drawable.dondamian,"Garcia","Juan","asdasdd@gmail.com","7675775"));
+        listaContacto.add(new Contacto(R.drawable.dondamian,"Hentschel","Mariano","asdadsdas@gmail.com","988245789"));
+        listaContacto.add(new Contacto(R.drawable.dondamian,"asdad","Mariasdaaano","hdfyuy67@gmail.com","5453454353"));
+
+        RecyclerView listaDeContactos = findViewById(R.id.listaDeContactos);
+        listaDeContactos.setLayoutManager(new LinearLayoutManager(this));
+        ContactoAdapter miAdaptadorContacto = new ContactoAdapter(listaContacto,this);
+        listaDeContactos.setAdapter(miAdaptadorContacto);
     }
 }
